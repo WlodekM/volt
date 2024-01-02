@@ -16,6 +16,8 @@
 </script>
 <center>
 <Container>
+    <h1>Volt</h1>
+    <h3>Login</h3>
     <label for="bot">Bot?</label>
     <input type="checkbox" name="bot" id="bot" bind:checked={bot} disabled><br>
     {#if bot}
@@ -31,5 +33,5 @@
         } else {console.log("please enter bot token!")}
     }}>Submit</button>
 </Container>
-<button on:click={()=>{$goto("/home")}}>Home</button>
+<!-- <button on:click={()=>{$goto("/home")}}>Home</button> -->
 </center>
