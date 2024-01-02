@@ -5,19 +5,19 @@
     import logout from "../lib/assets/logout.svg"
     import { client } from "@/lib/client"
 	import {goto} from "@roxi/routify";
-	let servers = client.servers.toList();
-    client.on("ready", () => {servers = client.servers.toList()})
-    console.log(servers)
+	let servers = client.servers.items();
+    client.on("ready", () => {servers = client.servers.items()})
+    console.log("AAAA", servers)
 </script>
 
 <div class="sidebar">
     <div class="servers">
         {#each servers as server}
             <button on:click={() => {
-                console.log(`/servers/${server.id}`)
-                $goto(`/servers/${server.id}`)
+                console.log(`/servers/${server.data.id}`)
+                $goto(`/servers/${server.data.id}`)
             }} class="server">
-                <img src={server.icon.url} title={server.name} alt={`${server.name}`} class="server-icon">
+                <img src={server.data.icon.generateURL()} title={server.data.name} alt={`${server.data.name}`} class="server-icon">
             </button>
         {/each}
         <div class="padding"/>

@@ -11,7 +11,7 @@
     if (localStorage.getItem("token")) {
         console.log("Logged in from cache")
         botToken = localStorage.getItem("token");
-        client.loginBot(botToken)
+        client.login(botToken, "bot")
     }
 </script>
 <center>
@@ -27,7 +27,7 @@
     <button on:click={()=>{
         if(botToken) {
             console.log("h")
-            client.loginBot(botToken);
+            client.login(botToken, "bot")
             $token = botToken
             localStorage.setItem("token", botToken)
         } else {console.log("please enter bot token!")}

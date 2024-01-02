@@ -4,7 +4,7 @@
     // if(!client.user?.username) $goto("/login")
 </script>
 
-{#if client.ready}
+{#if client.ws.ready}
     <h1 style="text-align: center;" class="logo">Volt</h1>
 {:else}
     <a href="/login">Login</a>

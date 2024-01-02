@@ -1,5 +1,7 @@
 # TO-DO list
 
+- [ ] Finish porting to RevKit
+
 ## BUGS
 
 - [ ] fix errors when trying to access the accessories of a channel

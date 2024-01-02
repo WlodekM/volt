@@ -1,2 +1,2 @@
-import { Client } from "revolt.js";
+import { Client } from "revkit";
 export const client = new Client();
