@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Archivo");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+
+/* Colors */
+:root {
+    --accent: #00aaff;
+}
+
+body {
+    width: 100vw;
+    background-color: #0b181f;
+    color: #f8ece0;
+    font-family: 'Archivo';
+    margin: 0;
+}
+
+.logo {
+    font-family: 'Archivo Black';
+    font-weight: bold;
+    font-size: 500%;
+}
