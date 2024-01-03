@@ -3,6 +3,7 @@
     import ProgressBar from '@/components/ProgressBar.svelte'
     import { client } from "../lib/client.js"
     import Sidebar from "@/components/Sidebar.svelte";
+    import { readonly } from 'svelte/store'
     async function login() {
         if(!client.user?.username) {
             if (localStorage.getItem("token")) {
@@ -25,20 +26,28 @@
         return new Promise(resolve => setTimeout(resolve, time));
     }
     client.on("ready", () => {
+        client.setup()
         console.log(`Logged in as ${client.user?.username}`)
         console.log("Server list:", client.servers.items())
-        delay(100).then(() => $goto(window.location.pathname))
+        delay(100).then(() => {
+            client.ready = true
+            $goto(window.location.pathname)
+        })
     });
     let isLoggedIn = login()
 </script>
 <ProgressBar />
 
 <div>
-    {#if client.ws.ready}
-        <Sidebar/>
-    {:else}
-        {client.ws.ready}
-    {/if}
+    {#await isLoggedIn && client.ready && client.servers}
+        ...
+    {:then} 
+        {#if isLoggedIn && client.ready && client.servers}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbumpe;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbumpe;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            READY: {isLoggedIn}
+            <Sidebar/>
+        {/if}
+    {/await}
     <div class="side">
         {#await isLoggedIn}
             Logging in...
