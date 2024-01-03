@@ -13,12 +13,9 @@
 <div class="sidebar">
     <div class="servers">
         {#each servers as server}
-            <button on:click={() => {
-                console.log(`/servers/${server.id}`)
-                $goto(`/servers/${server.id}`)
-            }} class="server">
+            <a href={`/servers/${server.id}`} class="server">
                 <img src={server.icon.url} title={server.name} alt={`${server.name}`} class="server-icon">
-            </button>
+            </a>
         {/each}
         <div class="padding"/>
     </div>
